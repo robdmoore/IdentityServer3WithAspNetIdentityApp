@@ -27,6 +27,11 @@ namespace MvcAppWithFormsAuth
                 AllowedScopes = new List<string>
                 {
                     "reporting_api"
+                },
+
+                AllowedCorsOrigins = new List<string>
+                {
+                    "appwithformsauth.localtest.me"
                 }
             }
         };
