@@ -16,7 +16,8 @@ namespace MvcAppWithFormsAuth
                             .UseInMemoryScopes(Scopes.Get())
                             .UseInMemoryUsers(new List<InMemoryUser>()),
 
-                RequireSsl = false
+                RequireSsl = false,
+                EnableWelcomePage = false
             };
 
             app.UseIdentityServer(options);
