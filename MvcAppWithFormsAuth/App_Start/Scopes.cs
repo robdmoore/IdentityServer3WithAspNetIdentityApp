@@ -8,12 +8,13 @@ namespace MvcAppWithFormsAuth
         public static List<Scope> Get()
         {
             return new List<Scope>
-        {
-            new Scope
             {
-                Name = "reporting_api"
-            }
-        };
+                StandardScopes.OpenId,
+                new Scope
+                {
+                    Name = "reporting_api"
+                }
+            };
         }
     }
 }

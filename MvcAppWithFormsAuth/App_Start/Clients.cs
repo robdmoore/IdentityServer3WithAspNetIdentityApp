@@ -9,7 +9,6 @@ namespace MvcAppWithFormsAuth
         {
             return new List<Client>
         {
-           // no human involved
             new Client
             {
                 ClientName = "Reporting Site",
@@ -32,6 +31,27 @@ namespace MvcAppWithFormsAuth
                 AllowedCorsOrigins = new List<string>
                 {
                     "http://anotherapp.localtest.me"
+                }
+            },
+            new Client
+            {
+                ClientName = "Reporting Site via Login",
+                ClientId = "reporting_with_login",
+                Enabled = true,
+                AccessTokenType = AccessTokenType.Jwt,
+                Flow = Flows.Implicit,
+                AllowedScopes = new List<string>
+                {
+                    "reporting_api",
+                    StandardScopes.OpenId.Name
+                },
+                AllowedCorsOrigins = new List<string>
+                {
+                    "http://anotherapp.localtest.me"
+                },
+                RedirectUris = new List<string>
+                {
+                    "http://anotherapp.localtest.me/"
                 }
             }
         };
