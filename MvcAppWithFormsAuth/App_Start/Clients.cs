@@ -15,7 +15,7 @@ namespace MvcAppWithFormsAuth
                 ClientName = "Reporting Site",
                 ClientId = "reporting",
                 Enabled = true,
-                AccessTokenType = AccessTokenType.Reference,
+                AccessTokenType = AccessTokenType.Jwt,
 
                 Flow = Flows.ClientCredentials,
 
@@ -31,7 +31,7 @@ namespace MvcAppWithFormsAuth
 
                 AllowedCorsOrigins = new List<string>
                 {
-                    "appwithformsauth.localtest.me"
+                    "http://anotherapp.localtest.me"
                 }
             }
         };
