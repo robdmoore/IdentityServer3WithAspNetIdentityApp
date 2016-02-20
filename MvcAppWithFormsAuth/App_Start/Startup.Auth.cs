@@ -26,6 +26,7 @@ namespace MvcAppWithFormsAuth
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
+                ReturnUrlParameter = "ReturnUrl",
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.

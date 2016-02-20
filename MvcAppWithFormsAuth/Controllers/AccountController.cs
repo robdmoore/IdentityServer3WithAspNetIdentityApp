@@ -428,7 +428,7 @@ namespace MvcAppWithFormsAuth.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
-            if (Url.IsLocalUrl(returnUrl))
+            if (Url.IsLocalUrl(returnUrl.Replace("http://" + Request.Url.Host, "")))
             {
                 return Redirect(returnUrl);
             }
