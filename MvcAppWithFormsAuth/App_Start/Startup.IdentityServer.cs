@@ -8,6 +8,8 @@ using IdentityServer3.Core.Services;
 using IdentityServer3.Core.Services.InMemory;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
 using MvcAppWithFormsAuth.Models;
 using Owin;
 
@@ -30,7 +32,8 @@ namespace MvcAppWithFormsAuth
                 EnableWelcomePage = false
             };
 
-            options.Factory.UserService = new Registration<IUserService>(resolver => new AspNetIdentityUserService<ApplicationUser, string>(HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()));
+            //options.Factory.UserService = new Registration<IUserService>(resolver => new AspNetIdentityUserService<ApplicationUser, string>(HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()));
+            options.Factory.UserService = new Registration<IUserService>(_ => new FormsAuthUserService());
 
             app.Map("/identity", idApp => idApp.UseIdentityServer(options));
         }
