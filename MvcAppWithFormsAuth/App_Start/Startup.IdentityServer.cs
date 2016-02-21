@@ -33,7 +33,7 @@ namespace MvcAppWithFormsAuth
             };
 
             //options.Factory.UserService = new Registration<IUserService>(resolver => new AspNetIdentityUserService<ApplicationUser, string>(HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()));
-            options.Factory.UserService = new Registration<IUserService>(_ => new FormsAuthUserService());
+            options.Factory.UserService = new Registration<IUserService>(_ => new CookieAuthUserService());
 
             app.Map("/identity", idApp => idApp.UseIdentityServer(options));
         }
