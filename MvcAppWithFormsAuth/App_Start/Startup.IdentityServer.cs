@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using System.Web;
-using IdentityServer3.AspNetIdentity;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
+using IdentityServer3.Core.Services.Default;
 using IdentityServer3.Core.Services.InMemory;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
-using MvcAppWithFormsAuth.Models;
 using Owin;
 
 namespace MvcAppWithFormsAuth
@@ -29,7 +23,8 @@ namespace MvcAppWithFormsAuth
                             .UseInMemoryUsers(new List<InMemoryUser>()),
                 SigningCertificate = LoadCertificate(),
                 RequireSsl = false,
-                EnableWelcomePage = false
+                EnableWelcomePage = false,
+                SiteName = "Authentication service"
             };
 
             //options.Factory.UserService = new Registration<IUserService>(resolver => new AspNetIdentityUserService<ApplicationUser, string>(HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()));
