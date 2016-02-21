@@ -52,7 +52,8 @@ namespace MvcAppWithFormsAuth
                 RedirectUris = new List<string>
                 {
                     "http://anotherapp.localtest.me/"
-                }
+                },
+                RequireConsent = false
             }
         };
         }
