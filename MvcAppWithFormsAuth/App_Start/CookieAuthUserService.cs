@@ -1,17 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Security;
 using IdentityServer3.Core.Models;
-using IdentityServer3.Core.Services.Default;
+using IdentityServer3.Core.Services.InMemory;
 using Microsoft.Owin.Security.DataHandler;
 using Microsoft.Owin.Security.DataProtection;
 using AuthenticateResult = IdentityServer3.Core.Models.AuthenticateResult;
 
 namespace MvcAppWithFormsAuth
 {
-    public class CookieAuthUserService : UserServiceBase
+    public class CookieAuthUserService : InMemoryUserService
     {
+
+        // This ctor isn't needed for CookieAuthUserService (the base class should be UserServiceBase), but it allows for my demo to have password flow work against in-memory users too
+        public CookieAuthUserService(List<InMemoryUser> users)
+            : base(users)
+        {
+        }
+
         public override Task PreAuthenticateAsync(PreAuthenticationContext context)
         {
             var cookie = HttpContext.Current.Request.Cookies.Get(".AspNet.ApplicationCookie");

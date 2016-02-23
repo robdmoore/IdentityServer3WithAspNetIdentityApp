@@ -19,16 +19,16 @@ namespace MvcAppWithFormsAuth
             {
                 Factory = new IdentityServerServiceFactory()
                             .UseInMemoryClients(Clients.Get())
-                            .UseInMemoryScopes(Scopes.Get())
-                            .UseInMemoryUsers(new List<InMemoryUser>()),
+                            .UseInMemoryScopes(Scopes.Get()),
                 SigningCertificate = LoadCertificate(),
                 RequireSsl = false,
                 EnableWelcomePage = false,
                 SiteName = "Authentication service"
             };
 
+            // The next line hooks up ASP.NET identity user store to Identity Server so the Identity Server login page can be used in place of the ASP.NET identity one
             //options.Factory.UserService = new Registration<IUserService>(resolver => new AspNetIdentityUserService<ApplicationUser, string>(HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()));
-            options.Factory.UserService = new Registration<IUserService>(_ => new CookieAuthUserService());
+            options.Factory.UserService = new Registration<IUserService>(_ => new CookieAuthUserService(Users.Get()));
 
             app.Map("/identity", idApp => idApp.UseIdentityServer(options));
         }

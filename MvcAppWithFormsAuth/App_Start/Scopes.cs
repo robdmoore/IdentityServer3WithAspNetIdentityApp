@@ -10,6 +10,7 @@ namespace MvcAppWithFormsAuth
             return new List<Scope>
             {
                 StandardScopes.OpenId,
+                StandardScopes.OfflineAccess,
                 new Scope
                 {
                     Name = "reporting_api"
